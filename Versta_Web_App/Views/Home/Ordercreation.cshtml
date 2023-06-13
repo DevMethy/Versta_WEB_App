@@ -1,0 +1,25 @@
+﻿@model Versta_Web_App.Models.CargoOrder
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Верста - тестовое задание</title>
+    <link rel="stylesheet" href="~/style.css" type="text/css" />
+</head>
+<body>
+    <div class="form-wrapper">
+        <h1>Создать новый заказ:</h1>
+        <form asp-action="Ordercreation" asp-controller="home" class="order-creation-form">
+            <p>Введите город отправителя:<br> <input required asp-for="SenderCity" /></p>
+            <p>Введите адрес отправителя:<br> <input required asp-for="SenderAddress" /></p>
+            <p>Введите город получателя:<br> <input required asp-for="RecipientCity" /></p>
+            <p>Введите адрес получателя:<br> <input required asp-for="RecipientAddress" /></p>
+            <p>Введите вес груза:<br> <input type="number" step="0.001" required asp-for="CargoWeight" /></p>
+            <p>Введите дату забора груза:<br> <input required type="date" asp-for="DepartureDate" /></p>
+            <input style="display: none;" value="@Guid.NewGuid().ToString("N")" asp-for="OrderUniqueId" />
+            <input class="form-submit-btn" type="submit" value="Отправить" />
+        </form>
+    </div>
+</body>
+</html>

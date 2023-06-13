@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Versta_Web_App.Models.CargoOrder>
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Верста - тестовое задание</title>
+    <link rel="stylesheet" href="~/style.css" type="text/css" />
+</head>
+<body>
+    <div id="orders-wrapper">
+        <a id="create-order-btn" asp-action="Ordercreation">Создать заказ</a>
+        <h1>Созданные заказы</h1>
+        @foreach (var item in Model)
+        {
+            <div class="order-card">
+                <p><b>Заказ №:</b> @item.OrderUniqueId</p>
+                <p><b>Город отправителя:</b> @item.SenderCity</p>
+                <p><b>Адрес отправителя:</b> @item.SenderAddress</p>
+                <p><b>Город получателя:</b> @item.RecipientCity</p>
+                <p><b>Адрес получателя:</b> @item.RecipientAddress</p>
+                <p><b>Вес груза:</b> @item.CargoWeight кг</p>
+                <p><b>Дата забора груза:</b> @item.DepartureDate</p>
+                <form asp-controller="Home" asp-action="Delete" method="post" asp-route-id="@item.Id">
+                    <input class="delete-order-btn" type="submit" value="Удалить" />
+                </form>
+            </div>
+        }
+    </div>
+</body>
+</html>
